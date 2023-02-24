@@ -1,5 +1,5 @@
 package nextdrive.springnativetemplate.data
 
-import org.springframework.data.repository.kotlin.CoroutineCrudRepository
+import org.springframework.data.jpa.repository.JpaRepository
 
-interface UserDao : CoroutineCrudRepository<User, Long>
+interface UserDao : JpaRepository<User, Long>

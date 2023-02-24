@@ -16,11 +16,12 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
-    maven { url = uri("https://repo.spring.io/release") }
+    maven("https://repo.spring.io/release")
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:$springdocVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -29,7 +30,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.flywaydb:flyway-core")
-    runtimeOnly("org.postgresql:r2dbc-postgresql")
     runtimeOnly("org.postgresql:postgresql")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
