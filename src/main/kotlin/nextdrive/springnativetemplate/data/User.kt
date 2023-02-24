@@ -1,19 +1,24 @@
 package nextdrive.springnativetemplate.data
 
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
 import java.io.Serializable
 
-@Entity
 @Table(name = "users")
+@Entity
 class User(
-    @Id
-    var id: Long? = null,
+    @Column
     val name: String
-) : Serializable {
+) : BaseAutoIdEntity()
+
+@MappedSuperclass
+abstract class BaseAutoIdEntity : Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Int? = null
+
     override fun equals(other: Any?): Boolean {
-        return other != null && other is User && other.id == (this.id ?: false)
+        return other != null && other is BaseAutoIdEntity && other.id == (this.id ?: false)
     }
 
     override fun hashCode(): Int {

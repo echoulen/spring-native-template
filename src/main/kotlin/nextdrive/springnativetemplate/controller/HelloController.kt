@@ -8,7 +8,6 @@ import nextdrive.springnativetemplate.data.UserDao
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import kotlin.random.Random
 
 @RestController
 @Tag(name = "hello api")
@@ -19,7 +18,7 @@ class HelloController(
     @GetMapping
     suspend fun getHello(): User {
         return withContext(Dispatchers.IO) {
-            userDao.save(User(name = "hello user", id = Random(3L).nextLong()))
+            userDao.save(User(name = "hello user"))
         }
     }
 }
